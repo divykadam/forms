@@ -5,7 +5,7 @@ const EditButton = (props) => {
   return (
     <>
       <button
-        className="tableContaint_btn"
+        className="table-containt_btn"
         id="submitBTN"
         onClick={() => props.handleEdit(navigate("/editC"))}
       >

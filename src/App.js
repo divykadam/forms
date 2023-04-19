@@ -1,8 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Routing/Layout";
+// Class componet import
 import { FormClass } from "./Form/classComponent/FormClass";
-import EmpData from "./Form/classComponent/EmpData";
+import EmpShowData from "./Form/classComponent/EmpShowData";
 import EmpEdit from "./Form/classComponent/EmpEdit";
+// function componet import
 import FunctionEditData from "./Form/functionComponent/FunctionEditData";
 import FunctionForm from "./Form/functionComponent/FunctionForm";
 import ShowFunction from "./Form/functionComponent/ShowFunction";
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: "showAllC",
-        element: <EmpData />,
+        element: <EmpShowData />,
       },
       {
         path: "editC",
@@ -48,11 +50,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return (
-    <div className="App">
-      <RouterProvider router={router} />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

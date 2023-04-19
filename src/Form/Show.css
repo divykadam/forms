@@ -1,24 +1,24 @@
-.tableContaint {
+.table-containt {
   width: 100%;
   display: flex;
   justify-content: right;
   flex-direction: column;
 }
 
-.tableContaint_table {
+.table-containt_table {
   width: auto;
   background-color: #8282f8;
   padding: 30px;
   margin: 10px;
 }
 
-.tableContaint_tr {
+.table-containt_tr {
   width: auto;
   height: 45px;
   align-items: center;
-  border: 4px solid white;
+  border: 4px solid #ffffff;
   border-radius: 5px;
-  color: white;
+  color: #ffffff;
   font-size: 14px;
 }
 
@@ -29,14 +29,14 @@ th {
   text-align: left;
 }
 
-.tableContaint_btn {
+.table-containt_btn {
   width: 100px;
   padding: 5px;
   border-radius: 10px;
-  background-color: antiquewhite;
+  background-color: #ffffff;
 }
 
-.tableContaint_btn:hover {
-  background-color: white;
+.table-containt_btn:hover {
+  background-color: #ffffff;
   color: #8282f8;
 }

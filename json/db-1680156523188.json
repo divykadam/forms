@@ -1,0 +1,53 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Ram",
+      "email": "ram@gmail.com",
+      "mobno": "7777777",
+      "address": "Ayodhiya"
+    },
+    {
+      "id": 2,
+      "name": "Sita",
+      "email": "sita@gmail.com",
+      "mobno": "8888888888888",
+      "address": "Janakpuri"
+    },
+    {
+      "id": 4,
+      "name": "Shyam",
+      "email": "shayam@gmail.com",
+      "mobno": "8888888888",
+      "address": "Indore"
+    },
+    {
+      "id": "5",
+      "name": "Geeta",
+      "email": "geeta@gmail.com",
+      "mobno": "6666666666",
+      "address": "Indore"
+    },
+    {
+      "id": "7",
+      "name": "om",
+      "email": "om@gmail.comm",
+      "mobno": "6555555",
+      "address": "omkareshawar (M.P.)"
+    },
+    {
+      "id": "6",
+      "name": "Divy Kadam",
+      "email": "divy@gmail.com",
+      "mobno": "9753050061",
+      "address": "Indore"
+    }
+  ]
+}

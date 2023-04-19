@@ -43,85 +43,82 @@ export class FormClass extends Component {
   render() {
     return (
       <div className="contain-form">
-        <form>
-          <table>
-            <tr>
-              <label>
-                Id
-                <input
-                  type="text"
-                  placeholder="id"
-                  onChange={(e) => {
-                    this.setState({ id: e.target.value });
-                  }}
-                />
-              </label>
-            </tr>
-            <tr>
-              <label>
-                Full Name
-                <input
-                  type="text"
-                  placeholder="Full Name"
-                  onChange={(e) => {
-                    this.setState({ name: e.target.value });
-                  }}
-                />
-              </label>
-            </tr>
-            <tr>
-              <label>
-                Email
-                <input
-                  type="email"
-                  placeholder="@gmail.com"
-                  onChange={(e) => {
-                    this.setState({ email: e.target.value });
-                  }}
-                />
-              </label>
-            </tr>
-            <tr>
-              <label>
-                Mob no.
-                <input
-                  type="text"
-                  placeholder="Mobno."
-                  onChange={(e) => {
-                    this.setState({ mobno: e.target.value });
-                  }}
-                />
-              </label>
-            </tr>
-            <tr>
-              <label>
-                Address
-                <input
-                  type="address"
-                  placeholder="Address"
-                  onChange={(e) => {
-                    this.setState({ address: e.target.value });
-                  }}
-                />
-              </label>
-            </tr>
-            <tr>
-              <button
-                type="submit"
-                className="btn"
-                id="submitBTN"
-                onClick={this.hendleSubmitform}
-              >
-                Submit
-              </button>
-            </tr>
-            <tr>
-              <Link className="link" to="/showAllC">
-                Show Data
-              </Link>
-            </tr>
-          </table>
-        </form>
+        <table>
+          <tr>
+            <label>
+              Id
+              <input
+                type="text"
+                placeholder="id"
+                onChange={(e) => {
+                  this.setState({ id: e.target.value });
+                }}
+              />
+            </label>
+          </tr>
+          <tr>
+            <label>
+              Full Name
+              <input
+                type="text"
+                placeholder="Full Name"
+                onChange={(e) => {
+                  this.setState({ name: e.target.value });
+                }}
+              />
+            </label>
+          </tr>
+          <tr>
+            <label>
+              Email
+              <input
+                type="email"
+                placeholder="@gmail.com"
+                onChange={(e) => {
+                  this.setState({ email: e.target.value });
+                }}
+              />
+            </label>
+          </tr>
+          <tr>
+            <label>
+              Mob no.
+              <input
+                type="text"
+                placeholder="Mobno."
+                onChange={(e) => {
+                  this.setState({ mobno: e.target.value });
+                }}
+              />
+            </label>
+          </tr>
+          <tr>
+            <label>
+              Address
+              <input
+                type="address"
+                placeholder="Address"
+                onChange={(e) => {
+                  this.setState({ address: e.target.value });
+                }}
+              />
+            </label>
+          </tr>
+          <tr>
+            <button
+              type="submit"
+              className="btn"
+              onClick={this.hendleSubmitform}
+            >
+              Submit
+            </button>
+          </tr>
+          <tr>
+            <Link className="link" to="/showAllC">
+              Show Data
+            </Link>
+          </tr>
+        </table>
       </div>
     );
   }

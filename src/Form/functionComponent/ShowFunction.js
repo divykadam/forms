@@ -10,9 +10,9 @@ const ShowFunction = () => {
     navigate(`/edit/${id}`);
   };
   return (
-    <div className="tableContaint">
-      <table className="tableContaint_table">
-        <tr className="tableContaint_tr">
+    <div className="table-containt">
+      <table className="table-containt_table">
+        <tr className="table-containt_tr">
           <th>Id</th>
           <th>Name</th>
           <th>Email</th>
@@ -22,7 +22,7 @@ const ShowFunction = () => {
           <th></th>
         </tr>
         {empData.map((data, i) => (
-          <tr key={i} className="tableContaint_tr">
+          <tr key={i} className="table-containt_tr">
             <td>{data.id}</td>
             <td>{data.name}</td>
             <td>{data.email}</td>
@@ -30,7 +30,7 @@ const ShowFunction = () => {
             <td>{data.address}</td>
             <td>
               <button
-                className="tableContaint_btn"
+                className="table-containt_btn"
                 onClick={() => {
                   handleEdit(data.id);
                 }}
@@ -40,7 +40,7 @@ const ShowFunction = () => {
             </td>
             <td>
               <button
-                className="tableContaint_btn"
+                className="table-containt_btn"
                 onClick={() =>
                   dispatch({ type: "removeData", payload: data.id })
                 }

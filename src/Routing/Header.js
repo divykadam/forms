@@ -7,7 +7,7 @@ const Header = () => {
     <div className="header">
       <nav>
         <button
-          className="header_link"
+          className="header-link"
           onClick={() => {
             navigate("/formC");
           }}
@@ -15,7 +15,7 @@ const Header = () => {
           Class (Form)
         </button>
         <button
-          className="header_link"
+          className="header-link"
           onClick={() => {
             navigate("/form");
           }}

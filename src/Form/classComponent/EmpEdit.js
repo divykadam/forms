@@ -54,88 +54,85 @@ export class EmpEdit extends Component {
 
   render() {
     return (
-      <>
-        <form>
-          <table>
-            <tr>
-              <label>
-                Id
-                <input
-                  type="text"
-                  placeholder="id"
-                  value={this.state.id}
-                  onChange={(e) => {
-                    this.setState({ id: e.target.value });
-                  }}
-                />
-              </label>
-            </tr>
-            <tr>
-              <label>
-                Full Name
-                <input
-                  type="text"
-                  placeholder="Full Name"
-                  value={this.state.name}
-                  onChange={(e) => {
-                    this.setState({ name: e.target.value });
-                  }}
-                />
-              </label>
-            </tr>
-            <tr>
-              <label>
-                Email
-                <input
-                  type="email"
-                  placeholder="@gmail.com"
-                  value={this.state.email}
-                  onChange={(e) => {
-                    this.setState({ email: e.target.value });
-                  }}
-                />
-              </label>
-            </tr>
-            <tr>
-              <label>
-                Mob no.
-                <input
-                  type="text"
-                  placeholder="Mobno."
-                  value={this.state.mobno}
-                  onChange={(e) => {
-                    this.setState({ mobno: e.target.value });
-                  }}
-                />
-              </label>
-            </tr>
-            <tr>
-              <label>
-                Address
-                <input
-                  type="address"
-                  placeholder="Address"
-                  value={this.state.address}
-                  onChange={(e) => {
-                    this.setState({ address: e.target.value });
-                  }}
-                />
-              </label>
-            </tr>
-            <tr>
-              <button
-                type="submit"
-                className="btn"
-                id="submitBTN"
-                onClick={this.hendleSubmitform}
-              >
-                Submit
-              </button>
-              {/* <SubmitButton hendleSubmitform={this.hendleSubmitform}/> */}
-            </tr>
-          </table>
-        </form>
-      </>
+      <div className="contain-form">
+        <table>
+          <tr>
+            <label>
+              Id
+              <input
+                type="text"
+                placeholder="id"
+                value={this.state.id}
+                onChange={(e) => {
+                  this.setState({ id: e.target.value });
+                }}
+              />
+            </label>
+          </tr>
+          <tr>
+            <label>
+              Full Name
+              <input
+                type="text"
+                placeholder="Full Name"
+                value={this.state.name}
+                onChange={(e) => {
+                  this.setState({ name: e.target.value });
+                }}
+              />
+            </label>
+          </tr>
+          <tr>
+            <label>
+              Email
+              <input
+                type="email"
+                placeholder="@gmail.com"
+                value={this.state.email}
+                onChange={(e) => {
+                  this.setState({ email: e.target.value });
+                }}
+              />
+            </label>
+          </tr>
+          <tr>
+            <label>
+              Mob no.
+              <input
+                type="text"
+                placeholder="Mobno."
+                value={this.state.mobno}
+                onChange={(e) => {
+                  this.setState({ mobno: e.target.value });
+                }}
+              />
+            </label>
+          </tr>
+          <tr>
+            <label>
+              Address
+              <input
+                type="address"
+                placeholder="Address"
+                value={this.state.address}
+                onChange={(e) => {
+                  this.setState({ address: e.target.value });
+                }}
+              />
+            </label>
+          </tr>
+          <tr>
+            <button
+              type="submit"
+              className="btn"
+              onClick={this.hendleSubmitform}
+            >
+              Submit
+            </button>
+            {/* <SubmitButton hendleSubmitform={this.hendleSubmitform}/> */}
+          </tr>
+        </table>
+      </div>
     );
   }
 }
