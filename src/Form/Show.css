@@ -1,0 +1,42 @@
+.tableContaint {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+  flex-direction: column;
+}
+
+.tableContaint_table {
+  width: auto;
+  background-color: #8282f8;
+  padding: 30px;
+  margin: 10px;
+}
+
+.tableContaint_tr {
+  width: auto;
+  height: 45px;
+  align-items: center;
+  border: 4px solid white;
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+}
+
+td,
+th {
+  width: 100px;
+  padding: 20px;
+  text-align: left;
+}
+
+.tableContaint_btn {
+  width: 100px;
+  padding: 5px;
+  border-radius: 10px;
+  background-color: antiquewhite;
+}
+
+.tableContaint_btn:hover {
+  background-color: white;
+  color: #8282f8;
+}
