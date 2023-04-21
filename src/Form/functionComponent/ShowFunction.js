@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../Show.css";
+import { RemoveData } from "../../Action/Action";
 
 const ShowFunction = () => {
   const navigate = useNavigate();
@@ -41,9 +42,7 @@ const ShowFunction = () => {
             <td>
               <button
                 className="table-containt_btn"
-                onClick={() =>
-                  dispatch({ type: "removeData", payload: data.id })
-                }
+                onClick={() => dispatch(RemoveData(data.id))}
               >
                 Delete
               </button>

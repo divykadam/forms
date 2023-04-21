@@ -1,6 +1,6 @@
-import { Component } from "react";
 import { Link } from "react-router-dom";
 import "../Form.css";
+import { Component } from "react";
 
 export class FormClass extends Component {
   constructor() {

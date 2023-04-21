@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import "../Form.css";
+import { AddData } from "../../Action/Action";
 
 const FunctionForm = () => {
   const navigate = useNavigate();
@@ -16,8 +17,7 @@ const FunctionForm = () => {
 
   const hendleSubmitform = (e) => {
     e.preventDefault();
-    console.log(allData);
-    dispatch({ type: "addData", payload: allData });
+    dispatch(AddData(allData));
     navigate("/showAll");
   };
   return (

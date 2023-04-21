@@ -43,18 +43,11 @@
       "address": "Indore"
     },
     {
-      "id": "9",
-      "name": "Ram",
-      "email": "ram@gmail.com",
+      "id": "5",
+      "name": "Mayank",
+      "email": "mayank.kadam.sdbg@gmail.com",
       "mobno": "",
-      "address": "Indore(M.P.)"
-    },
-    {
-      "id": "8",
-      "name": "Divyanshee Kadam",
-      "email": "divyansheekadams6@gmail.com",
-      "mobno": "",
-      "address": "110/C Sangam Nagar Indore"
+      "address": "110-C, Sangam Nagar, Indore(M.P.)"
     }
   ]
 }

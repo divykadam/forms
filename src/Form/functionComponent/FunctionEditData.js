@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import "../Form.css";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { EditData } from "../../Action/Action";
+import "../Form.css";
 
+//C:\Users\divya\TechStuff Work\Project\forms\src\Action\Action.js
 const FunctionEditData = () => {
   const dispatch = useDispatch();
   const editId = useParams();
@@ -23,7 +25,12 @@ const FunctionEditData = () => {
   const hendleSubmitform = (e) => {
     e.preventDefault();
 
-    dispatch({ type: "editData", payload: allData });
+    // dispatch({ type: "editData", payload: allData });
+    dispatch(EditData(allData));
+    navigate("/showAll");
+  };
+  //Cancel Button
+  const cancelButton = () => {
     navigate("/showAll");
   };
   return (
@@ -94,9 +101,16 @@ const FunctionEditData = () => {
             </label>
           </tr>
           <tr>
-            <button type="submit" onClick={hendleSubmitform}>
-              Submit
-            </button>
+            <td>
+              <button className="btn" type="submit" onClick={hendleSubmitform}>
+                Submit
+              </button>
+            </td>
+            <td>
+              <button className="btn" onClick={cancelButton}>
+                Cancel
+              </button>
+            </td>
           </tr>
         </table>
       </form>

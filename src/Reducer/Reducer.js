@@ -1,3 +1,4 @@
+import { AddData, EditData, RemoveData } from "../Action/Action";
 const initialState = {
   empData: [
     {
@@ -16,6 +17,7 @@ const initialState = {
     },
   ],
 };
+
 const Reducer = (state = initialState, action) => {
   const stateData = state.empData;
   switch (action.type) {
@@ -29,6 +31,7 @@ const Reducer = (state = initialState, action) => {
       return { ...state, empData: newState };
 
     case "removeData":
+      alert("Data Deleting.......");
       return {
         ...state,
         empData: stateData.filter((post) => post.id !== action.payload),

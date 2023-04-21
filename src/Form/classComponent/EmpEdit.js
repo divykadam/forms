@@ -1,3 +1,4 @@
+import withNavigation from "./NavigationButton/Navigate";
 import { Component } from "react";
 
 export class EmpEdit extends Component {
@@ -5,27 +6,17 @@ export class EmpEdit extends Component {
     super(props);
     this.state = {
       error: null,
-      employe: this.props.employe,
+      employee: this.props.employee,
       id: null,
       name: "",
       email: "",
       mobno: "",
       address: "",
     };
-    console.log(this.props.editData);
+    console.log("empData", this.props.employee);
   }
-  //   handleEdit=()=>{
-  //   this.props.employe.map((data)=>{
-  //     this.setState({id: data.id,
-  //           name: data.name,
-  //           email: data.email,
-  //           mobno: data.mobno,
-  //           address: data.address})
-  //         })
-  // }
 
-  hendleSubmitform = (e) => {
-    e.preventDefault();
+  hendleSubmitform = (navigate) => {
     const newLists = {
       id: this.state.id,
       name: this.state.name,
@@ -44,15 +35,19 @@ export class EmpEdit extends Component {
       body: JSON.stringify(newLists),
     })
       .then((result) => {
-        alert("Result", result);
-        window.location = "/showAllC";
+        alert("updating Data....");
+        navigate("/showAllC");
       })
       .catch((err) => {
         console.log(err);
       });
   };
-
+  //Cancel edit data Button
+  CancelEdit = (navigate) => {
+    navigate("/showAllC");
+  };
   render() {
+    const { navigate } = this.props;
     return (
       <div className="contain-form">
         <table>
@@ -122,18 +117,24 @@ export class EmpEdit extends Component {
             </label>
           </tr>
           <tr>
-            <button
-              type="submit"
-              className="btn"
-              onClick={this.hendleSubmitform}
-            >
-              Submit
-            </button>
-            {/* <SubmitButton hendleSubmitform={this.hendleSubmitform}/> */}
+            <td>
+              <button
+                type="submit"
+                className="btn"
+                onClick={() => this.hendleSubmitform(navigate)}
+              >
+                Submit
+              </button>
+            </td>
+            <td>
+              <button className="btn" onClick={() => this.CancelEdit(navigate)}>
+                Cancel
+              </button>
+            </td>
           </tr>
         </table>
       </div>
     );
   }
 }
-export default EmpEdit;
+export default withNavigation(EmpEdit);
