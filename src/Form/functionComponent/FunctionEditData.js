@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { EditData } from "../../Action/Action";
 import "../Form.css";
 
-//C:\Users\divya\TechStuff Work\Project\forms\src\Action\Action.js
 const FunctionEditData = () => {
   const dispatch = useDispatch();
   const editId = useParams();
@@ -14,21 +13,30 @@ const FunctionEditData = () => {
     id: "",
     name: "",
     email: "",
-    mobno: "",
+    mobNo: "",
     address: "",
   });
-  useEffect(() => {
-    const [editData] = empData.filter((data) => editId.id === data.id);
-    setAllData({ ...allData, ...editData });
-  }, [setAllData]);
 
+  //access data in input box
+  useEffect(() => {
+    const [editData] = empData.filter((data) => data.id === editId.id);
+    setAllData(editData);
+  }, [setAllData, empData]);
+
+  //input Data
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    setAllData({ ...allData, [e.target.name]: e.target.value });
+  };
+
+  //submit Button
   const hendleSubmitform = (e) => {
     e.preventDefault();
-
-    // dispatch({ type: "editData", payload: allData });
     dispatch(EditData(allData));
     navigate("/showAll");
   };
+
   //Cancel Button
   const cancelButton = () => {
     navigate("/showAll");
@@ -43,8 +51,9 @@ const FunctionEditData = () => {
               <input
                 type="text"
                 placeholder="id"
+                name="id"
                 value={allData.id}
-                onChange={(e) => setAllData({ ...allData, id: e.target.value })}
+                onChange={handleInputChange}
               />
             </label>
           </tr>
@@ -54,10 +63,9 @@ const FunctionEditData = () => {
               <input
                 type="text"
                 placeholder="Full Name"
+                name="name"
                 value={allData.name}
-                onChange={(e) =>
-                  setAllData({ ...allData, name: e.target.value })
-                }
+                onChange={handleInputChange}
               />
             </label>
           </tr>
@@ -67,10 +75,9 @@ const FunctionEditData = () => {
               <input
                 type="email"
                 placeholder="@gmail.com"
+                name="email"
                 value={allData.email}
-                onChange={(e) =>
-                  setAllData({ ...allData, email: e.target.value })
-                }
+                onChange={handleInputChange}
               />
             </label>
           </tr>
@@ -80,10 +87,9 @@ const FunctionEditData = () => {
               <input
                 type="text"
                 placeholder="Mobno."
-                value={allData.mobno}
-                onChange={(e) =>
-                  setAllData({ ...allData, mobno: e.target.value })
-                }
+                name="mobNo."
+                value={allData.mobNo}
+                onChange={handleInputChange}
               />
             </label>
           </tr>
@@ -93,10 +99,9 @@ const FunctionEditData = () => {
               <input
                 type="address"
                 placeholder="Address"
+                name="address"
                 value={allData.address}
-                onChange={(e) =>
-                  setAllData({ ...allData, address: e.target.value })
-                }
+                onChange={handleInputChange}
               />
             </label>
           </tr>

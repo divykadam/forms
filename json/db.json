@@ -22,32 +22,53 @@
       "address": "110-C, Sangam Nagar, Indore(M.P.)"
     },
     {
-      "id": 4,
-      "name": "Shyam",
-      "email": "shayam@gmail.com",
-      "mobno": "8888888888",
+      "id": "3",
+      "name": "Divyanshee Kadam",
+      "email": "divyansheekadams6@gmail.com",
+      "mobno": "",
+      "address": "110/C Sangam Nagar Indore"
+    },
+    {
+      "id": "4",
+      "name": "Mayank kadam",
+      "email": "mayank.kadam.sdbg@gmail.com",
+      "mobno": "",
+      "address": "110-C, Sangam Nagar, Indore(M.P.)"
+    },
+    {
+      "id": "5",
+      "name": "Divy",
+      "email": "divyansheekadams6@gmail.com",
+      "mobno": "55555",
+      "address": "Indore"
+    },
+    {
+      "id": "6",
+      "name": "Divyanshee Kadam",
+      "email": "divy6@gmail.com",
+      "mobNo": "666666",
       "address": "Indore"
     },
     {
       "id": "7",
-      "name": "om",
-      "email": "om@gmail.comm",
-      "mobno": "6555555",
-      "address": "omkareshawar (M.P.)"
-    },
-    {
-      "id": "6",
-      "name": "Divy Kadam",
-      "email": "divy@gmail.com",
-      "mobno": "9753050061",
-      "address": "Indore"
-    },
-    {
-      "id": "5",
       "name": "Mayank",
       "email": "mayank.kadam.sdbg@gmail.com",
-      "mobno": "",
+      "mobNo": "",
       "address": "110-C, Sangam Nagar, Indore(M.P.)"
+    },
+    {
+      "id": "8",
+      "name": "",
+      "email": "divyansheekadams6@gmail.com",
+      "mobno": "",
+      "address": "110/C Sangam Nagar Indore"
+    },
+    {
+      "id": "9",
+      "name": "Divyanshee Kadam",
+      "email": "divyansheekadams6@gmail.com",
+      "mobno": "",
+      "address": "110/C Sangam Nagar Indore"
     }
   ]
 }

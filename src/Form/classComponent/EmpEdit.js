@@ -4,48 +4,74 @@ import { Component } from "react";
 export class EmpEdit extends Component {
   constructor(props) {
     super(props);
+    const { paramsId } = this.props;
+
     this.state = {
-      error: null,
-      employee: this.props.employee,
-      id: null,
+      id: paramsId.id,
       name: "",
       email: "",
-      mobno: "",
+      mobNo: "",
       address: "",
     };
-    console.log("empData", this.props.employee);
+
+    console.log("empData", paramsId);
   }
 
-  hendleSubmitform = (navigate) => {
+  //get data
+  async componentDidMount() {
+    const response = await fetch(
+      `http://localhost:3000/users/${this.state.id}`
+    );
+    const json = await response.json();
+    if (json) {
+      this.setState((prevState) => ({
+        ...prevState,
+        ...json,
+      }));
+    } else {
+      console.log("Error:-Data coud not be fetched");
+    }
+  }
+  //input change Data
+  handleInputChange = (e) => {
+    this.setState({ ...this.state, [e.target.name]: e.target.value });
+  };
+
+  hendleSubmitform = async (e, navigate) => {
+    e.preventDefault();
     const newLists = {
       id: this.state.id,
       name: this.state.name,
       email: this.state.email,
-      mobno: this.state.mobno,
+      mobNo: this.state.mobNo,
       address: this.state.address,
     };
     console.warn(newLists);
 
-    fetch(`http://localhost:3000/users/${this.state.id}`, {
-      method: "PUT",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newLists),
-    })
-      .then((result) => {
-        alert("updating Data....");
-        navigate("/showAllC");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    const response = await fetch(
+      `http://localhost:3000/users/${this.state.id}`,
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newLists),
+      }
+    );
+    const json = response.json();
+    if (json) {
+      navigate("/showAllC");
+    } else {
+      console.log("Error:-Data coud not be fetched");
+    }
   };
+
   //Cancel edit data Button
   CancelEdit = (navigate) => {
     navigate("/showAllC");
   };
+
   render() {
     const { navigate } = this.props;
     return (
@@ -57,10 +83,9 @@ export class EmpEdit extends Component {
               <input
                 type="text"
                 placeholder="id"
+                name="id"
                 value={this.state.id}
-                onChange={(e) => {
-                  this.setState({ id: e.target.value });
-                }}
+                onChange={this.handleInputChange}
               />
             </label>
           </tr>
@@ -70,10 +95,9 @@ export class EmpEdit extends Component {
               <input
                 type="text"
                 placeholder="Full Name"
+                name="name"
                 value={this.state.name}
-                onChange={(e) => {
-                  this.setState({ name: e.target.value });
-                }}
+                onChange={this.handleInputChange}
               />
             </label>
           </tr>
@@ -83,10 +107,9 @@ export class EmpEdit extends Component {
               <input
                 type="email"
                 placeholder="@gmail.com"
+                name="email"
                 value={this.state.email}
-                onChange={(e) => {
-                  this.setState({ email: e.target.value });
-                }}
+                onChange={this.handleInputChange}
               />
             </label>
           </tr>
@@ -96,10 +119,9 @@ export class EmpEdit extends Component {
               <input
                 type="text"
                 placeholder="Mobno."
-                value={this.state.mobno}
-                onChange={(e) => {
-                  this.setState({ mobno: e.target.value });
-                }}
+                name="mobNo"
+                value={this.state.mobNo}
+                onChange={this.handleInputChange}
               />
             </label>
           </tr>
@@ -109,19 +131,17 @@ export class EmpEdit extends Component {
               <input
                 type="address"
                 placeholder="Address"
+                name="address"
                 value={this.state.address}
-                onChange={(e) => {
-                  this.setState({ address: e.target.value });
-                }}
+                onChange={this.handleInputChange}
               />
             </label>
           </tr>
           <tr>
             <td>
               <button
-                type="submit"
                 className="btn"
-                onClick={() => this.hendleSubmitform(navigate)}
+                onClick={(e) => this.hendleSubmitform(e, navigate)}
               >
                 Submit
               </button>

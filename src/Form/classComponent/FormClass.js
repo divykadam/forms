@@ -1,46 +1,50 @@
 import { Link } from "react-router-dom";
 import "../Form.css";
 import { Component } from "react";
+import withNavigation from "./NavigationButton/Navigate";
 
-export class FormClass extends Component {
+class FormClass extends Component {
   constructor() {
     super();
     this.state = {
       id: null,
       name: "",
       email: "",
-      mobno: "",
+      mobNo: "",
       address: "",
       newList: "",
     };
   }
-  hendleSubmitform = (e) => {
+  handleInputChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  hendleSubmitform = async (e, navigate) => {
     e.preventDefault();
     const newLists = {
       id: this.state.id,
       name: this.state.name,
       email: this.state.email,
-      mobno: this.state.mobno,
+      mobno: this.state.mobNo,
       address: this.state.address,
     };
     console.log(newLists);
-    fetch("http://localhost:3000/users", {
+    const response = await fetch("http://localhost:3000/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(newLists),
-    })
-      .then((resp) => resp.json())
-      .then((result) => {
-        alert("Result", result);
-        window.location = "/showAllC";
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    });
+    const json = response.json();
+    if (json) {
+      navigate("/showAllC");
+    } else {
+      console.log("Error:-Data coud not be fetched");
+    }
   };
   render() {
+    const { navigate } = this.props;
     return (
       <div className="contain-form">
         <table>
@@ -50,9 +54,8 @@ export class FormClass extends Component {
               <input
                 type="text"
                 placeholder="id"
-                onChange={(e) => {
-                  this.setState({ id: e.target.value });
-                }}
+                name="id"
+                onChange={this.handleInputChange}
               />
             </label>
           </tr>
@@ -62,9 +65,8 @@ export class FormClass extends Component {
               <input
                 type="text"
                 placeholder="Full Name"
-                onChange={(e) => {
-                  this.setState({ name: e.target.value });
-                }}
+                name="name"
+                onChange={this.handleInputChange}
               />
             </label>
           </tr>
@@ -74,9 +76,8 @@ export class FormClass extends Component {
               <input
                 type="email"
                 placeholder="@gmail.com"
-                onChange={(e) => {
-                  this.setState({ email: e.target.value });
-                }}
+                name="email"
+                onChange={this.handleInputChange}
               />
             </label>
           </tr>
@@ -85,10 +86,9 @@ export class FormClass extends Component {
               Mob no.
               <input
                 type="text"
-                placeholder="Mobno."
-                onChange={(e) => {
-                  this.setState({ mobno: e.target.value });
-                }}
+                placeholder="MobNo"
+                name="MobNo"
+                onChange={this.handleInputChange}
               />
             </label>
           </tr>
@@ -97,10 +97,9 @@ export class FormClass extends Component {
               Address
               <input
                 type="address"
+                name="address"
                 placeholder="Address"
-                onChange={(e) => {
-                  this.setState({ address: e.target.value });
-                }}
+                onChange={this.handleInputChange}
               />
             </label>
           </tr>
@@ -108,7 +107,7 @@ export class FormClass extends Component {
             <button
               type="submit"
               className="btn"
-              onClick={this.hendleSubmitform}
+              onClick={(e) => this.hendleSubmitform(e, navigate)}
             >
               Submit
             </button>
@@ -123,3 +122,4 @@ export class FormClass extends Component {
     );
   }
 }
+export default withNavigation(FormClass);

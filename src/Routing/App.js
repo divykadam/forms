@@ -1,14 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./Routing/Layout";
+import Layout from "./Layout";
 // Class componet import
-import { FormClass } from "./Form/classComponent/FormClass";
-import EmpShowData from "./Form/classComponent/EmpShowData";
-import EmpEdit from "./Form/classComponent/EmpEdit";
+import FormClass from "../Form/classComponent/FormClass";
+import EmpShowData from "../Form/classComponent/EmpShowData";
+import EmpEdit from "../Form/classComponent/EmpEdit";
 // function componet import
-import FunctionEditData from "./Form/FunctionComponent/FunctionEditData";
-import FunctionForm from "./Form/FunctionComponent/FunctionForm";
-import ShowFunction from "./Form/FunctionComponent/ShowFunction";
-import Error from "./Form/Error";
+import FunctionEditData from "../Form/FunctionComponent/FunctionEditData";
+import FunctionForm from "../Form/FunctionComponent/FunctionForm";
+import ShowFunction from "../Form/FunctionComponent/ShowFunction";
+import Error from "../Form/Error";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         element: <EmpShowData />,
       },
       {
-        path: "editC",
+        path: "editC/:id",
         element: <EmpEdit />,
       },
 

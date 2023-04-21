@@ -27,7 +27,7 @@ const ShowFunction = () => {
             <td>{data.id}</td>
             <td>{data.name}</td>
             <td>{data.email}</td>
-            <td>{data.mobno}</td>
+            <td>{data.mobNo}</td>
             <td>{data.address}</td>
             <td>
               <button

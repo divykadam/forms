@@ -11,9 +11,13 @@ const FunctionForm = () => {
     id: null,
     name: "",
     email: "",
-    mobno: "",
+    mobNo: "",
     address: "",
   });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setAllData({ ...allData, [name]: value });
+  };
 
   const hendleSubmitform = (e) => {
     e.preventDefault();
@@ -29,8 +33,9 @@ const FunctionForm = () => {
             <input
               type="text"
               placeholder="id"
+              name="id"
               value={allData.id}
-              onChange={(e) => setAllData({ ...allData, id: e.target.value })}
+              onChange={handleInputChange}
             />
           </label>
         </tr>
@@ -40,8 +45,9 @@ const FunctionForm = () => {
             <input
               type="text"
               placeholder="Full Name"
+              name="name"
               value={allData.name}
-              onChange={(e) => setAllData({ ...allData, name: e.target.value })}
+              onChange={handleInputChange}
             />
           </label>
         </tr>
@@ -51,10 +57,9 @@ const FunctionForm = () => {
             <input
               type="email"
               placeholder="@gmail.com"
+              name="email"
               value={allData.email}
-              onChange={(e) =>
-                setAllData({ ...allData, email: e.target.value })
-              }
+              onChange={handleInputChange}
             />
           </label>
         </tr>
@@ -63,11 +68,10 @@ const FunctionForm = () => {
             Mob no :-
             <input
               type="text"
-              placeholder="Mobno."
-              value={allData.mobno}
-              onChange={(e) =>
-                setAllData({ ...allData, mobno: e.target.value })
-              }
+              placeholder="mobNo."
+              name="mobNo"
+              value={allData.mobNo}
+              onChange={handleInputChange}
             />
           </label>
         </tr>
@@ -77,10 +81,9 @@ const FunctionForm = () => {
             <input
               type="address"
               placeholder="Address"
+              name="address"
               value={allData.address}
-              onChange={(e) =>
-                setAllData({ ...allData, address: e.target.value })
-              }
+              onChange={handleInputChange}
             />
           </label>
         </tr>

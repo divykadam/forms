@@ -1,6 +1,5 @@
 import { Component } from "react";
 import withNavigation from "./NavigationButton/Navigate";
-import EmpEdit from "./EmpEdit";
 
 class EmpShowData extends Component {
   constructor() {
@@ -10,7 +9,7 @@ class EmpShowData extends Component {
       id: null,
       name: "",
       email: "",
-      mobno: "",
+      mobNo: "",
       address: "",
       editData: [],
       empId: "",
@@ -18,25 +17,27 @@ class EmpShowData extends Component {
   }
 
   //get data
-  componentDidMount() {
-    fetch("http://localhost:3000/users")
-      .then((response) => response.json())
-      .then((result) => {
-        this.setState({ employee: result });
-      })
-      .catch((error) => {
-        this.setState({ error: error });
-      });
+  async componentDidMount() {
+    const response = await fetch("http://localhost:3000/users");
+    const json = await response.json();
+    if (json) {
+      this.setState({ employee: json });
+    } else {
+      console.log("Error:-Data coud not be fetched");
+    }
   }
 
   //Delete Data
-  handleDelete = (id) => {
-    console.log("Delete", id);
-    fetch(`http://localhost:3000/users/${id}`, {
+  handleDelete = async (id) => {
+    const response = await fetch(`http://localhost:3000/users/${id}`, {
       method: "DELETE",
-    }).then((response) => {
-      alert(`"Delete" ${response}`);
     });
+    const deleteData = await response.json();
+    if (deleteData) {
+      alert(`"Delete" ${response}`);
+    } else {
+      console.log("Error:-Data coud not be fetched");
+    }
   };
 
   //Edit data
@@ -51,12 +52,9 @@ class EmpShowData extends Component {
   // };
 
   handleEdit = (id, navigate) => {
-    const edit = this.state.employee.filter((data) => {
-      return data.id === id;
-    });
-    console.log("id", edit);
-
-    navigate("/editC");
+    this.setState({ empId: id });
+    console.log("empId", this.state.empId);
+    navigate(`/editC/${id}`);
   };
 
   render() {
@@ -79,7 +77,7 @@ class EmpShowData extends Component {
               <td>{data.id}</td>
               <td>{data.name}</td>
               <td>{data.email}</td>
-              <td>{data.mobno}</td>
+              <td>{data.mobNo}</td>
               <td>{data.address}</td>
               <td>
                 <button
@@ -100,9 +98,7 @@ class EmpShowData extends Component {
             </tr>
           ))}
         </table>
-        <div className="emp-componethide">
-          <EmpEdit editData={this.state.employee} />
-        </div>
+        <div className="emp-componethide"></div>
       </div>
     );
   }
