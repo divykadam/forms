@@ -61,7 +61,7 @@ export class EmpEdit extends Component {
     if (json) {
       this.props.navigate("/employeesC");
     } else {
-      console.log("Error:-Data coud not be fetched");
+      console.log("Error:-Data coud not be Update");
     }
   };
 

@@ -41,7 +41,6 @@ class EmpShowData extends Component {
   };
 
   handleEdit = (id) => {
-    this.setState({ empId: id });
     this.props.navigate(`/editC/${id}`);
   };
 
