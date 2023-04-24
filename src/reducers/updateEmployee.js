@@ -21,7 +21,6 @@ const initialState = {
 const addData = add_data().type;
 const editData = edit_data().type;
 const removeData = remove_data().type;
-console.log(addData);
 
 const UpdateEmployee = (state = initialState, action) => {
   const stateData = state.empData;
