@@ -1,12 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "../show.css";
-import { RemoveData } from "../../action/index";
+import { remove_data } from "../../action/index";
 
 const ShowFunction = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const empData = useSelector((state) => state.reducer.empData);
+  const empData = useSelector((state) => state.updateEmployee.empData);
 
   const handleEdit = (id) => {
     navigate(`/edit/${id}`);
@@ -44,7 +44,7 @@ const ShowFunction = () => {
             <td>
               <button
                 className="table-containt_btn"
-                onClick={() => dispatch(RemoveData(data.id))}
+                onClick={() => dispatch(remove_data(data.id))}
               >
                 Delete
               </button>

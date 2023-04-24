@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { EditData } from "../../action/index";
+import { edit_data } from "../../action/index";
 import "../form.css";
 
 const FunctionEditData = () => {
   const dispatch = useDispatch();
   const editId = useParams();
   const navigate = useNavigate();
-  const empData = useSelector((state) => state.reducer.empData);
+  const empData = useSelector((state) => state.updateEmployee.empData);
   const [allData, setAllData] = useState({
     id: "",
     name: "",
@@ -32,7 +32,7 @@ const FunctionEditData = () => {
   //submit Button
   const hendleSubmitform = (e) => {
     e.preventDefault();
-    dispatch(EditData(allData));
+    dispatch(edit_data(allData));
     navigate("/employees");
   };
 

@@ -1,20 +1,24 @@
-export const AddData = (data) => {
+const addData = "addData";
+const editData = "editData";
+const removeData = "removeData";
+
+export const add_data = (data) => {
   return {
-    type: "addData",
+    type: addData,
     payload: data,
   };
 };
 
-export const EditData = (data) => {
+export const edit_data = (data) => {
   return {
-    type: "editData",
+    type: editData,
     payload: data,
   };
 };
 
-export const RemoveData = (data) => {
+export const remove_data = (data) => {
   return {
-    type: "removeData",
+    type: removeData,
     payload: data,
   };
 };

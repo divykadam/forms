@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { AddData } from "../../action/index";
+import { add_data } from "../../action/index";
 import "../form.css";
 
 const FunctionForm = () => {
@@ -16,13 +16,12 @@ const FunctionForm = () => {
   });
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setAllData({ ...allData, [name]: value });
+    setAllData({ ...allData, [e.target.name]: e.target.value });
   };
 
   const hendleSubmitform = (e) => {
     e.preventDefault();
-    dispatch(AddData(allData));
+    dispatch(add_data(allData));
     navigate("/employees");
   };
 

@@ -1,4 +1,4 @@
-import { AddData, EditData, RemoveData } from "../action/index";
+import { add_data, edit_data, remove_data } from "../action/index";
 
 const initialState = {
   empData: [
@@ -18,10 +18,10 @@ const initialState = {
     },
   ],
 };
-
-const addData = AddData().type;
-const editData = EditData().type;
-const removeData = RemoveData().type;
+const addData = add_data().type;
+const editData = edit_data().type;
+const removeData = remove_data().type;
+console.log(addData);
 
 const UpdateEmployee = (state = initialState, action) => {
   const stateData = state.empData;

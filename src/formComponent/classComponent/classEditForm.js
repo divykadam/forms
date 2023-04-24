@@ -66,7 +66,7 @@ export class EmpEdit extends Component {
   };
 
   //Cancel edit data Button
-  CancelEdit = () => {
+  cancelEdit = () => {
     this.props.navigate("/employeesC");
   };
 
@@ -141,7 +141,7 @@ export class EmpEdit extends Component {
               </button>
             </td>
             <td>
-              <button className="btn" onClick={this.CancelEdit}>
+              <button className="btn" onClick={this.cancelEdit}>
                 Cancel
               </button>
             </td>
