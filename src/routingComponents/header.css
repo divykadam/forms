@@ -1,0 +1,34 @@
+.header {
+  background-color: #8282f8;
+  height: 50px;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+nav {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 40px;
+}
+
+nav:nth-child(1) {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.header-link {
+  color: #ffffff;
+  background-color: #8282f8;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+}
+
+.header-link:hover {
+  color: #000000;
+}

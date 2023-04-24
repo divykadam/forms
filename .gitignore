@@ -4,12 +4,15 @@
 /node_modules
 /.pnp
 .pnp.js
+/db.json
+/db-1680156523188.json
 
 # testing
 /coverage
 
 # production
 /build
+/json
 
 # misc
 .DS_Store
