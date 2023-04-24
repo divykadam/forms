@@ -1,4 +1,4 @@
-import withNavigation from "./navigationLink/navigate";
+import withNavigation from "./NavigationLink/Navigate";
 import { Component } from "react";
 
 class EmpShowData extends Component {

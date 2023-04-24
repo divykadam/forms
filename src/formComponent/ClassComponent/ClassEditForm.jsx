@@ -1,23 +1,39 @@
-import { Link } from "react-router-dom";
-import withNavigation from "./navigationLink/navigate";
+import withNavigation from "./NavigationLink/Navigate";
 import { Component } from "react";
-import "../form.css";
 
-class FormClass extends Component {
-  constructor() {
-    super();
+export class EmpEdit extends Component {
+  constructor(props) {
+    super(props);
+    const { paramsId } = this.props;
+
     this.state = {
-      id: null,
+      id: paramsId.id,
       name: "",
       email: "",
       mobNo: "",
       address: "",
-      newList: "",
     };
   }
 
+  //get data
+  async componentDidMount() {
+    const response = await fetch(
+      `http://localhost:3000/users/${this.state.id}`
+    );
+    const json = await response.json();
+    if (json) {
+      this.setState((prevState) => ({
+        ...prevState,
+        ...json,
+      }));
+    } else {
+      console.log("Error:-Data coud not be fetched");
+    }
+  }
+
+  //input change Data
   handleInputChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
 
   hendleSubmitform = async (e) => {
@@ -30,19 +46,28 @@ class FormClass extends Component {
       address: this.state.address,
     };
 
-    const response = await fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newLists),
-    });
+    const response = await fetch(
+      `http://localhost:3000/users/${this.state.id}`,
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newLists),
+      }
+    );
     const json = response.json();
     if (json) {
       this.props.navigate("/employeesC");
     } else {
-      console.log("Error:-Data coud not be post");
+      console.log("Error:-Data coud not be Update");
     }
+  };
+
+  //Cancel edit data Button
+  cancelEdit = () => {
+    this.props.navigate("/employeesC");
   };
 
   render() {
@@ -56,6 +81,7 @@ class FormClass extends Component {
                 type="text"
                 placeholder="id"
                 name="id"
+                value={this.state.id}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -67,6 +93,7 @@ class FormClass extends Component {
                 type="text"
                 placeholder="Full Name"
                 name="name"
+                value={this.state.name}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -78,6 +105,7 @@ class FormClass extends Component {
                 type="email"
                 placeholder="@gmail.com"
                 name="email"
+                value={this.state.email}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -87,8 +115,9 @@ class FormClass extends Component {
               Mob no.
               <input
                 type="tel"
-                placeholder="MobNo"
+                placeholder="Mobno."
                 name="mobNo"
+                value={this.state.mobNo}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -98,25 +127,24 @@ class FormClass extends Component {
               Address
               <input
                 type="address"
-                name="address"
                 placeholder="Address"
+                name="address"
+                value={this.state.address}
                 onChange={this.handleInputChange}
               />
             </label>
           </tr>
           <tr>
-            <button
-              type="submit"
-              className="btn"
-              onClick={(e) => this.hendleSubmitform(e)}
-            >
-              Submit
-            </button>
-          </tr>
-          <tr>
-            <Link className="link" to="/employeesC">
-              Show Data
-            </Link>
+            <td>
+              <button className="btn" onClick={(e) => this.hendleSubmitform(e)}>
+                Submit
+              </button>
+            </td>
+            <td>
+              <button className="btn" onClick={this.cancelEdit}>
+                Cancel
+              </button>
+            </td>
           </tr>
         </table>
       </div>
@@ -124,4 +152,4 @@ class FormClass extends Component {
   }
 }
 
-export default withNavigation(FormClass);
+export default withNavigation(EmpEdit);

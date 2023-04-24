@@ -1,14 +1,14 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./layout";
+import Layout from "./Layout";
 // Class Component import
-import FormClass from "../formComponent/classComponent/classForm";
-import EmpShowData from "../formComponent/classComponent/classShowData";
-import EmpEdit from "../formComponent/classComponent/classEditForm";
+import FormClass from "../formComponent/ClassComponent/ClassForm";
+import EmpShowData from "../formComponent/ClassComponent/ClassShowData";
+import EmpEdit from "../formComponent/ClassComponent/ClassEditForm";
 
 // Function Component import
-import FunctionEditData from "../formComponent/functionComponent/functionEditData";
-import FunctionForm from "../formComponent/functionComponent/functionForm";
-import ShowFunction from "../formComponent/functionComponent/functionShowData";
+import FunctionForm from "../formComponent/FunctionComponent/FunctionForm";
+import FunctionEditData from "../formComponent/FunctionComponent/FunctionEditData";
+import ShowFunction from "../formComponent/FunctionComponent/FunctionShowData";
 import Error from "../formComponent/error";
 
 const router = createBrowserRouter([
