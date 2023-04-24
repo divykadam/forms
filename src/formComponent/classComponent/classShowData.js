@@ -1,5 +1,5 @@
+import withNavigation from "./navigationLink/navigate";
 import { Component } from "react";
-import withNavigation from "./NavigationButton/Navigate";
 
 class EmpShowData extends Component {
   constructor() {
@@ -36,29 +36,16 @@ class EmpShowData extends Component {
     if (deleteData) {
       alert(`"Delete" ${response}`);
     } else {
-      console.log("Error:-Data coud not be fetched");
+      console.log("Error:-Data coud not be Delete");
     }
   };
 
-  //Edit data
-  // handleEdit = (id, navigate) => {
-  //   this.setState((prevState) => ({
-  //     editData: prevState.employee.filter((data) => {
-  //       return id === data.id;
-  //     }),
-  //   }));
-  //   console.log("id", );
-  //   navigate("/editC");
-  // };
-
-  handleEdit = (id, navigate) => {
+  handleEdit = (id) => {
     this.setState({ empId: id });
-    console.log("empId", this.state.empId);
-    navigate(`/editC/${id}`);
+    this.props.navigate(`/editC/${id}`);
   };
 
   render() {
-    const { navigate } = this.props;
     const { employee } = this.state;
     return (
       <div className="table-containt">
@@ -82,7 +69,7 @@ class EmpShowData extends Component {
               <td>
                 <button
                   className="table-containt_btn"
-                  onClick={() => this.handleEdit(data.id, navigate)}
+                  onClick={() => this.handleEdit(data.id)}
                 >
                   Edit
                 </button>
@@ -103,4 +90,5 @@ class EmpShowData extends Component {
     );
   }
 }
+
 export default withNavigation(EmpShowData);

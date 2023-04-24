@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
+
 function withNavigation(Component) {
   return function (props) {
     const navigation = useNavigate();

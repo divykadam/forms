@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { EditData } from "../../Action/Action";
-import "../Form.css";
+import { EditData } from "../../action/index";
+import "../form.css";
 
 const FunctionEditData = () => {
   const dispatch = useDispatch();
@@ -24,7 +24,6 @@ const FunctionEditData = () => {
   }, [setAllData, empData]);
 
   //input Data
-
   const handleInputChange = (e) => {
     e.preventDefault();
     setAllData({ ...allData, [e.target.name]: e.target.value });
@@ -34,13 +33,14 @@ const FunctionEditData = () => {
   const hendleSubmitform = (e) => {
     e.preventDefault();
     dispatch(EditData(allData));
-    navigate("/showAll");
+    navigate("/employees");
   };
 
   //Cancel Button
   const cancelButton = () => {
-    navigate("/showAll");
+    navigate("/employees");
   };
+
   return (
     <div className="contain-form">
       <form>
@@ -122,4 +122,5 @@ const FunctionEditData = () => {
     </div>
   );
 };
+
 export default FunctionEditData;

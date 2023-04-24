@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 /.pnp
+/db-1680156523188.json
+/db.json
 .pnp.js
 
 # testing
@@ -10,6 +12,7 @@
 
 # production
 /build
+/json
 
 # misc
 .DS_Store

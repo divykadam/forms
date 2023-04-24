@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import Reducer from "./Reducer";
+import UpdateEmployee from "./updateEmployee";
 
-const rootReducer = combineReducers({ reducer: Reducer });
+const rootReducer = combineReducers({ reducer: UpdateEmployee });
 
 export default rootReducer;

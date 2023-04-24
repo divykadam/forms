@@ -1,5 +1,4 @@
 export const AddData = (data) => {
-  console.log("actondata", data);
   return {
     type: "addData",
     payload: data,

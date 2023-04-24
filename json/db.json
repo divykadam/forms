@@ -58,16 +58,9 @@
     },
     {
       "id": "8",
-      "name": "",
-      "email": "divyansheekadams6@gmail.com",
-      "mobno": "",
-      "address": "110/C Sangam Nagar Indore"
-    },
-    {
-      "id": "9",
       "name": "Divyanshee Kadam",
       "email": "divyansheekadams6@gmail.com",
-      "mobno": "",
+      "mobNo": "",
       "address": "110/C Sangam Nagar Indore"
     }
   ]

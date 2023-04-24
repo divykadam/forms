@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import "../Form.css";
-import { AddData } from "../../Action/Action";
+import { useState } from "react";
+import { AddData } from "../../action/index";
+import "../form.css";
 
 const FunctionForm = () => {
   const navigate = useNavigate();
@@ -14,6 +14,7 @@ const FunctionForm = () => {
     mobNo: "",
     address: "",
   });
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setAllData({ ...allData, [name]: value });
@@ -22,8 +23,9 @@ const FunctionForm = () => {
   const hendleSubmitform = (e) => {
     e.preventDefault();
     dispatch(AddData(allData));
-    navigate("/showAll");
+    navigate("/employees");
   };
+
   return (
     <div className="contain-form">
       <table>
@@ -67,7 +69,7 @@ const FunctionForm = () => {
           <label>
             Mob no :-
             <input
-              type="text"
+              type="tel"
               placeholder="mobNo."
               name="mobNo"
               value={allData.mobNo}
@@ -96,4 +98,5 @@ const FunctionForm = () => {
     </div>
   );
 };
+
 export default FunctionForm;

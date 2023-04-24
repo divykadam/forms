@@ -1,4 +1,5 @@
-import { AddData, EditData, RemoveData } from "../Action/Action";
+import { AddData, EditData, RemoveData } from "../action/index";
+
 const initialState = {
   empData: [
     {
@@ -18,19 +19,23 @@ const initialState = {
   ],
 };
 
-const Reducer = (state = initialState, action) => {
+const addData = AddData().type;
+const editData = EditData().type;
+const removeData = RemoveData().type;
+
+const UpdateEmployee = (state = initialState, action) => {
   const stateData = state.empData;
   switch (action.type) {
-    case "addData":
+    case addData:
       return { empData: [...state.empData, action.payload] };
 
-    case "editData":
+    case editData:
       const newState = stateData.map((data) => {
         return data.id === action.payload.id ? action.payload : data;
       });
       return { ...state, empData: newState };
 
-    case "removeData":
+    case removeData:
       alert("Data Deleting.......");
       return {
         ...state,
@@ -41,4 +46,5 @@ const Reducer = (state = initialState, action) => {
       return state;
   }
 };
-export default Reducer;
+
+export default UpdateEmployee;

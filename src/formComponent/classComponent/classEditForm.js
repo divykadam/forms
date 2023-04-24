@@ -1,50 +1,76 @@
-import { Link } from "react-router-dom";
-import "../Form.css";
+import withNavigation from "./navigationLink/navigate";
 import { Component } from "react";
-import withNavigation from "./NavigationButton/Navigate";
 
-class FormClass extends Component {
-  constructor() {
-    super();
+export class EmpEdit extends Component {
+  constructor(props) {
+    super(props);
+    const { paramsId } = this.props;
+
     this.state = {
-      id: null,
+      id: paramsId.id,
       name: "",
       email: "",
       mobNo: "",
       address: "",
-      newList: "",
     };
   }
+
+  //get data
+  async componentDidMount() {
+    const response = await fetch(
+      `http://localhost:3000/users/${this.state.id}`
+    );
+    const json = await response.json();
+    if (json) {
+      this.setState((prevState) => ({
+        ...prevState,
+        ...json,
+      }));
+    } else {
+      console.log("Error:-Data coud not be fetched");
+    }
+  }
+
+  //input change Data
   handleInputChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ ...this.state, [e.target.name]: e.target.value });
   };
 
-  hendleSubmitform = async (e, navigate) => {
+  hendleSubmitform = async (e) => {
     e.preventDefault();
     const newLists = {
       id: this.state.id,
       name: this.state.name,
       email: this.state.email,
-      mobno: this.state.mobNo,
+      mobNo: this.state.mobNo,
       address: this.state.address,
     };
-    console.log(newLists);
-    const response = await fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newLists),
-    });
+
+    const response = await fetch(
+      `http://localhost:3000/users/${this.state.id}`,
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newLists),
+      }
+    );
     const json = response.json();
     if (json) {
-      navigate("/showAllC");
+      this.props.navigate("/employeesC");
     } else {
       console.log("Error:-Data coud not be fetched");
     }
   };
+
+  //Cancel edit data Button
+  CancelEdit = () => {
+    this.props.navigate("/employeesC");
+  };
+
   render() {
-    const { navigate } = this.props;
     return (
       <div className="contain-form">
         <table>
@@ -55,6 +81,7 @@ class FormClass extends Component {
                 type="text"
                 placeholder="id"
                 name="id"
+                value={this.state.id}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -66,6 +93,7 @@ class FormClass extends Component {
                 type="text"
                 placeholder="Full Name"
                 name="name"
+                value={this.state.name}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -77,6 +105,7 @@ class FormClass extends Component {
                 type="email"
                 placeholder="@gmail.com"
                 name="email"
+                value={this.state.email}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -85,9 +114,10 @@ class FormClass extends Component {
             <label>
               Mob no.
               <input
-                type="text"
-                placeholder="MobNo"
-                name="MobNo"
+                type="tel"
+                placeholder="Mobno."
+                name="mobNo"
+                value={this.state.mobNo}
                 onChange={this.handleInputChange}
               />
             </label>
@@ -97,29 +127,29 @@ class FormClass extends Component {
               Address
               <input
                 type="address"
-                name="address"
                 placeholder="Address"
+                name="address"
+                value={this.state.address}
                 onChange={this.handleInputChange}
               />
             </label>
           </tr>
           <tr>
-            <button
-              type="submit"
-              className="btn"
-              onClick={(e) => this.hendleSubmitform(e, navigate)}
-            >
-              Submit
-            </button>
-          </tr>
-          <tr>
-            <Link className="link" to="/showAllC">
-              Show Data
-            </Link>
+            <td>
+              <button className="btn" onClick={(e) => this.hendleSubmitform(e)}>
+                Submit
+              </button>
+            </td>
+            <td>
+              <button className="btn" onClick={this.CancelEdit}>
+                Cancel
+              </button>
+            </td>
           </tr>
         </table>
       </div>
     );
   }
 }
-export default withNavigation(FormClass);
+
+export default withNavigation(EmpEdit);

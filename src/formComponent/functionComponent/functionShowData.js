@@ -1,15 +1,17 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import "../Show.css";
-import { RemoveData } from "../../Action/Action";
+import "../show.css";
+import { RemoveData } from "../../action/index";
 
 const ShowFunction = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const empData = useSelector((state) => state.reducer.empData);
+
   const handleEdit = (id) => {
     navigate(`/edit/${id}`);
   };
+
   return (
     <div className="table-containt">
       <table className="table-containt_table">
@@ -53,4 +55,5 @@ const ShowFunction = () => {
     </div>
   );
 };
+
 export default ShowFunction;

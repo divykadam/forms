@@ -1,14 +1,15 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Layout from "./Layout";
-// Class componet import
-import FormClass from "../Form/classComponent/FormClass";
-import EmpShowData from "../Form/classComponent/EmpShowData";
-import EmpEdit from "../Form/classComponent/EmpEdit";
-// function componet import
-import FunctionEditData from "../Form/FunctionComponent/FunctionEditData";
-import FunctionForm from "../Form/FunctionComponent/FunctionForm";
-import ShowFunction from "../Form/FunctionComponent/ShowFunction";
-import Error from "../Form/Error";
+import Layout from "./layout";
+// Class Component import
+import FormClass from "../formComponent/classComponent/classForm";
+import EmpShowData from "../formComponent/classComponent/classShowData";
+import EmpEdit from "../formComponent/classComponent/classEditForm";
+
+// Function Component import
+import FunctionEditData from "../formComponent/functionComponent/functionEditData";
+import FunctionForm from "../formComponent/functionComponent/functionForm";
+import ShowFunction from "../formComponent/functionComponent/functionShowData";
+import Error from "../formComponent/error";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +21,7 @@ const router = createBrowserRouter([
         element: <FormClass />,
       },
       {
-        path: "showAllC",
+        path: "employeesC",
         element: <EmpShowData />,
       },
       {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
         element: <FunctionForm />,
       },
       {
-        path: "showAll",
+        path: "employees",
         element: <ShowFunction />,
       },
       {
@@ -49,8 +50,8 @@ const router = createBrowserRouter([
   },
 ]);
 
-function App() {
+const Routing = () => {
   return <RouterProvider router={router} />;
-}
+};
 
-export default App;
+export default Routing;
